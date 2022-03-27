@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import useBreedList from './useBreedList';
 
 import Pet from './Pet';
 
@@ -9,7 +10,7 @@ const SearchParams = () => {
   const [animal, setAnimal] = useState('');
   const [breed, setBreed] = useState('');
   const [pets, setPets] = useState([]);
-  const breeds = [];
+  const [breeds] = useBreedList(animal);
 
   async function requestPets() {
     const res = await fetch(
@@ -27,7 +28,13 @@ const SearchParams = () => {
 
   return (
     <div className="search-params">
-      <form>
+      <form
+        onSubmit={(event) => {
+          // prevent page refresh from happening.
+          event.preventDefault();
+          requestPets();
+        }}
+      >
         <label htmlFor="location">
           Location
           <input
