@@ -1,4 +1,4 @@
-# Frontend Master Complete Intro to React
+# Frontend Master Complete Intro to React (v6)
 
 > React application is fundamentally just a component which is made up
 > out of other components which is made up of another component and so on,
